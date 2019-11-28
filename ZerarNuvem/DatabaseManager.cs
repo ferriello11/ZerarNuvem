@@ -13,6 +13,7 @@ namespace ZerarNuvem
     {
         string ConnectionString = "";
         SqlConnection con;
+        //public SqlConnection con { get; set; }
 
         public DatabaseManager(string connStr)
         {
@@ -21,8 +22,17 @@ namespace ZerarNuvem
 
         public void OpenConection()
         {
-            con = new SqlConnection(ConnectionString);
-            con.Open();
+            try
+            {
+                con = new SqlConnection(ConnectionString);
+                con.Open();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
 
 
@@ -34,12 +44,12 @@ namespace ZerarNuvem
 
         public void ExecuteNonQueries(string Query_, string method = "")
         {
-            SqlCommand cmd = new SqlCommand(Query_, con);
             try
             {
                 OpenConection();
+                SqlCommand cmd = new SqlCommand(Query_, con);
                 cmd.ExecuteNonQuery();
-                //CloseConnection();
+                CloseConnection();
             }
             catch (Exception ex)
             {
@@ -76,7 +86,7 @@ namespace ZerarNuvem
                 dr.Fill(ds);
                 DataTable dataum = ds.Tables[0];
 
-                //   CloseConnection();
+                CloseConnection();
 
                 return dataum;
             }

@@ -13,11 +13,13 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
+            dbConnection.CloseConnection();
             if (disposing && (components != null))
             {
                 components.Dispose();
             }
             base.Dispose(disposing);
+
         }
 
         #region Windows Form Designer generated code
@@ -29,7 +31,7 @@
         private void InitializeComponent()
         {
             this.PainelMenu = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SairDelete = new System.Windows.Forms.Button();
             this.EntrarDelete = new System.Windows.Forms.Button();
             this.SenhaDelete = new System.Windows.Forms.TextBox();
@@ -52,7 +54,7 @@
             // 
             // PainelMenu
             // 
-            this.PainelMenu.Controls.Add(this.label6);
+            this.PainelMenu.Controls.Add(this.label7);
             this.PainelMenu.Controls.Add(this.SairDelete);
             this.PainelMenu.Controls.Add(this.EntrarDelete);
             this.PainelMenu.Controls.Add(this.SenhaDelete);
@@ -71,17 +73,19 @@
             this.PainelMenu.Size = new System.Drawing.Size(534, 243);
             this.PainelMenu.TabIndex = 0;
             // 
-            // label6
+            // label7
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(377, 10);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(126, 13);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "DESATIVAR AMBIENTE";
+            this.label7.AllowDrop = true;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(364, 10);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(156, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "SENHA PARA DESBLOQUEIO";
             // 
             // SairDelete
             // 
+            this.SairDelete.Enabled = false;
             this.SairDelete.Location = new System.Drawing.Point(445, 52);
             this.SairDelete.Name = "SairDelete";
             this.SairDelete.Size = new System.Drawing.Size(75, 23);
@@ -102,6 +106,7 @@
             // 
             // SenhaDelete
             // 
+            this.SenhaDelete.Enabled = false;
             this.SenhaDelete.Location = new System.Drawing.Point(363, 26);
             this.SenhaDelete.Name = "SenhaDelete";
             this.SenhaDelete.PasswordChar = '*';
@@ -273,7 +278,7 @@
         private System.Windows.Forms.Button SairDelete;
         private System.Windows.Forms.Button EntrarDelete;
         private System.Windows.Forms.TextBox SenhaDelete;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
 

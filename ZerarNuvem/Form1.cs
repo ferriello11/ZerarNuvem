@@ -12,7 +12,7 @@ namespace ZerarNuvem
 {
     public partial class Form1 : Form
     {
-
+        public DatabaseManager dbConnection;
         public DatabaseManager ConectDB()
         {
             //Conexão Com nuvem PmedOnline.
@@ -22,16 +22,22 @@ namespace ZerarNuvem
 
         public Form1()
         {
-            InitializeComponent();
-            PainelMenu.Enabled = false;
-            FecharLogin.Enabled = false;
-            DesativaAmbiente.Enabled = false;
-            ConectDB().OpenConection();
+            try
+            {
+                InitializeComponent();
+                PainelMenu.Enabled = false;
+                FecharLogin.Enabled = false;
+                DesativaAmbiente.Enabled = false;
+           }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         private void DesbloqueiaMenu(string TestaSenha)
         {
-            if (TestaSenha != "123")
+            if (TestaSenha != "totvs@mpn123")
             {
                 PainelMenu.Enabled = false;
                 SenhaLogin.Text = "";
@@ -52,7 +58,7 @@ namespace ZerarNuvem
         private void DesbloqueiaDeleteAmbiente(string SenhaDeleteTeste)
         {
 
-            if(SenhaDelete.Text != "123")
+            if(SenhaDelete.Text != "totvs@mpn123")
             {
                 SairDelete.Enabled = false;
                 SenhaDelete.Text = "";
@@ -65,52 +71,87 @@ namespace ZerarNuvem
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            try {
-                var SelectNuvem = ConectDB().GetDatable($@"select * from clinica where cpfcnpj = '{CpfCnpjBanco.Text}'");
-                //MostraRazaoSocial
-                MostraRazaoSocial.DataSource = SelectNuvem;
-                MostraRazaoSocial.DisplayMember = "RazaoSocial";
+                try
+                {
+                    var SelectNuvem = ConectDB().GetDatable($@"select * from clinica where cpfcnpj = '{CpfCnpjBanco.Text}'");
+                    //MostraRazaoSocial
+                    MostraRazaoSocial.DataSource = SelectNuvem;
+                    MostraRazaoSocial.DisplayMember = "RazaoSocial";
 
-                //MostraCpf
-                MostraCpfCNPJ.DataSource = SelectNuvem;
-                MostraCpfCNPJ.DisplayMember = "cpfcnpj";
-                MostraCpfCNPJ.ValueMember = "cpfcnpj";
+                    //MostraCpf
+                    MostraCpfCNPJ.DataSource = SelectNuvem;
+                    MostraCpfCNPJ.DisplayMember = "cpfcnpj";
+                    //MostraCpfCNPJ.ValueMember = "cpfcnpj";
 
 
-                //MostraID
-                MostraID.DataSource = SelectNuvem;
-                MostraID.DisplayMember = "ID";
-                MostraID.ValueMember = "ID"; 
-            }
-            catch
+                    //MostraID
+                    MostraID.DataSource = SelectNuvem;
+                    MostraID.DisplayMember = "ID";
+                    MostraID.ValueMember = "ID";
+
+                }
+                catch
+                {
+                    MostraRazaoSocial.Text = "AMBIENTE NÃO LOCALIZADO";
+                }
+
+
+            if (MostraRazaoSocial.Text == "AMBIENTE NÃO LOCALIZADO" || MostraRazaoSocial.Text == "" || MostraRazaoSocial.Text == null)
             {
-                MostraRazaoSocial.Text = "AMBIENTE NÃO LOCALIZADO";
+                SenhaDelete.Enabled = false;
             }
-            
+            else
+            {
+                SenhaDelete.Enabled = true;
+            }
+
         }
 
 
 
         private void FecharLogin_Click(object sender, EventArgs e)
-        {
+        {   
             PainelMenu.Enabled = false;
             SenhaLogin.Text = "";
             FecharLogin.Enabled = false;
             FazerLogin.Enabled = true;
+            MostraRazaoSocial.Text = "";
+            MostraCpfCNPJ.Text = "";
+            MostraID.Text = "";
+            CpfCnpjBanco.Text = "";
+            SenhaDelete.Enabled = false;
+
         }
         private void Login_Click(object sender, EventArgs e)
         {
             var testeSenha = SenhaLogin.Text;
             DesbloqueiaMenu(testeSenha);
         }
-        
-    
+
+
         private void DesativaAmbiente_Click(object sender, EventArgs e)
         {
-            var CpfCnpj = MostraCpfCNPJ.SelectedValue;
-            ConectDB().ExecuteNonQueries($@"update Clinica set Ativo = 1 where CpfCnpj = '{CpfCnpj}'");
             
+            var IdClinica = MostraID.SelectedValue;
+            var RazaoSocial = MostraRazaoSocial.SelectedValue;
+            var CpfCnpj = MostraCpfCNPJ.SelectedValue;
+            if (DialogResult.Yes == MessageBox.Show("TEM CERTEZA EM DESATIAR A CLINICA?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2))
+            {
+                ConectDB().ExecuteNonQueries($@"update Clinica set Ativo = 0 where ID = '{IdClinica}'");
+                ConectDB().ExecuteNonQueries($@"update ProfissionalClinica set Ativo = 0 where ID = '{IdClinica}'");
+                ConectDB().ExecuteNonQueries($@"update UsuarioClinica set Ativo = 0 where ID = '{IdClinica}'");
+                MessageBox.Show("CLINICA DESATIVADA COM SUCESSO", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }else
+            {
+                SenhaDelete.Text = "";
+                DesativaAmbiente.Enabled = false;
+            }
+            
+
+
+
         }
+
 
 
         private void EntrarDelete_Click(object sender, EventArgs e)
@@ -126,6 +167,10 @@ namespace ZerarNuvem
             EntrarDelete.Enabled = true;
             SairDelete.Enabled = false;
             DesativaAmbiente.Enabled = false;
+            MostraRazaoSocial.Text = "";
+            MostraCpfCNPJ.Text = "";
+            MostraID.Text = "";
+            CpfCnpjBanco.Text = "";
 
         }
     }
