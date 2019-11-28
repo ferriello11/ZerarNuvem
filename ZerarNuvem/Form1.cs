@@ -163,7 +163,7 @@ namespace ZerarNuvem
 
         private void SairDelete_Click(object sender, EventArgs e)
         {
-            
+            SenhaDelete.Enabled = false;
             EntrarDelete.Enabled = true;
             SairDelete.Enabled = false;
             DesativaAmbiente.Enabled = false;
