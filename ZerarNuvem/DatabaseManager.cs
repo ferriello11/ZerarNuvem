@@ -37,7 +37,7 @@ namespace ZerarNuvem
             SqlCommand cmd = new SqlCommand(Query_, con);
             try
             {
-                //OpenConection();
+                OpenConection();
                 cmd.ExecuteNonQuery();
                 //CloseConnection();
             }

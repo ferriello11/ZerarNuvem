@@ -7,3 +7,11 @@ C:\Projetos\ZerarNuvem\ZerarNuvem\ZerarNuvem\obj\Debug\ZerarNuvem.Properties.Res
 C:\Projetos\ZerarNuvem\ZerarNuvem\ZerarNuvem\obj\Debug\ZerarNuvem.csproj.GenerateResource.Cache
 C:\Projetos\ZerarNuvem\ZerarNuvem\ZerarNuvem\obj\Debug\ZerarNuvem.exe
 C:\Projetos\ZerarNuvem\ZerarNuvem\ZerarNuvem\obj\Debug\ZerarNuvem.pdb
+C:\Projetos\ZerarNuvem\ZerarNuvem\bin\Debug\ZerarNuvem.exe.config
+C:\Projetos\ZerarNuvem\ZerarNuvem\obj\Debug\ZerarNuvem.exe
+C:\Projetos\ZerarNuvem\ZerarNuvem\obj\Debug\ZerarNuvem.pdb
+C:\Projetos\ZerarNuvem\ZerarNuvem\bin\Debug\ZerarNuvem.exe
+C:\Projetos\ZerarNuvem\ZerarNuvem\bin\Debug\ZerarNuvem.pdb
+C:\Projetos\ZerarNuvem\ZerarNuvem\obj\Debug\ZerarNuvem.Form1.resources
+C:\Projetos\ZerarNuvem\ZerarNuvem\obj\Debug\ZerarNuvem.Properties.Resources.resources
+C:\Projetos\ZerarNuvem\ZerarNuvem\obj\Debug\ZerarNuvem.csproj.GenerateResource.Cache

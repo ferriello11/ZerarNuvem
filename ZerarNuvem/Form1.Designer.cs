@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.PainelMenu = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.SairDelete = new System.Windows.Forms.Button();
+            this.EntrarDelete = new System.Windows.Forms.Button();
+            this.SenhaDelete = new System.Windows.Forms.TextBox();
+            this.DesativaAmbiente = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.MostrarAmbiente = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,11 +47,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.FecharLogin = new System.Windows.Forms.Button();
             this.FazerLogin = new System.Windows.Forms.Button();
-            this.DesativaAmbiente = new System.Windows.Forms.Button();
-            this.SenhaDelete = new System.Windows.Forms.TextBox();
-            this.EntrarDelete = new System.Windows.Forms.Button();
-            this.SairDelete = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.PainelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,6 +70,53 @@
             this.PainelMenu.Name = "PainelMenu";
             this.PainelMenu.Size = new System.Drawing.Size(534, 243);
             this.PainelMenu.TabIndex = 0;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(377, 10);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(126, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "DESATIVAR AMBIENTE";
+            // 
+            // SairDelete
+            // 
+            this.SairDelete.Location = new System.Drawing.Point(445, 52);
+            this.SairDelete.Name = "SairDelete";
+            this.SairDelete.Size = new System.Drawing.Size(75, 23);
+            this.SairDelete.TabIndex = 13;
+            this.SairDelete.Text = "Sair";
+            this.SairDelete.UseVisualStyleBackColor = true;
+            this.SairDelete.Click += new System.EventHandler(this.SairDelete_Click);
+            // 
+            // EntrarDelete
+            // 
+            this.EntrarDelete.Location = new System.Drawing.Point(363, 52);
+            this.EntrarDelete.Name = "EntrarDelete";
+            this.EntrarDelete.Size = new System.Drawing.Size(75, 23);
+            this.EntrarDelete.TabIndex = 12;
+            this.EntrarDelete.Text = "Entrar";
+            this.EntrarDelete.UseVisualStyleBackColor = true;
+            this.EntrarDelete.Click += new System.EventHandler(this.EntrarDelete_Click);
+            // 
+            // SenhaDelete
+            // 
+            this.SenhaDelete.Location = new System.Drawing.Point(363, 26);
+            this.SenhaDelete.Name = "SenhaDelete";
+            this.SenhaDelete.PasswordChar = '*';
+            this.SenhaDelete.Size = new System.Drawing.Size(157, 20);
+            this.SenhaDelete.TabIndex = 11;
+            // 
+            // DesativaAmbiente
+            // 
+            this.DesativaAmbiente.Location = new System.Drawing.Point(363, 83);
+            this.DesativaAmbiente.Name = "DesativaAmbiente";
+            this.DesativaAmbiente.Size = new System.Drawing.Size(157, 23);
+            this.DesativaAmbiente.TabIndex = 10;
+            this.DesativaAmbiente.Text = "DESATIVAR AMBIENTE";
+            this.DesativaAmbiente.UseVisualStyleBackColor = true;
+            this.DesativaAmbiente.Click += new System.EventHandler(this.DesativaAmbiente_Click);
             // 
             // label4
             // 
@@ -186,53 +233,6 @@
             this.FazerLogin.Text = "Entrar";
             this.FazerLogin.UseVisualStyleBackColor = true;
             this.FazerLogin.Click += new System.EventHandler(this.Login_Click);
-            // 
-            // DesativaAmbiente
-            // 
-            this.DesativaAmbiente.Location = new System.Drawing.Point(356, 83);
-            this.DesativaAmbiente.Name = "DesativaAmbiente";
-            this.DesativaAmbiente.Size = new System.Drawing.Size(157, 23);
-            this.DesativaAmbiente.TabIndex = 10;
-            this.DesativaAmbiente.Text = "DESATIVAR AMBIENTE";
-            this.DesativaAmbiente.UseVisualStyleBackColor = true;
-            this.DesativaAmbiente.Click += new System.EventHandler(this.DesativaAmbiente_Click);
-            // 
-            // SenhaDelete
-            // 
-            this.SenhaDelete.Location = new System.Drawing.Point(356, 26);
-            this.SenhaDelete.Name = "SenhaDelete";
-            this.SenhaDelete.PasswordChar = '*';
-            this.SenhaDelete.Size = new System.Drawing.Size(157, 20);
-            this.SenhaDelete.TabIndex = 11;
-            // 
-            // EntrarDelete
-            // 
-            this.EntrarDelete.Location = new System.Drawing.Point(356, 52);
-            this.EntrarDelete.Name = "EntrarDelete";
-            this.EntrarDelete.Size = new System.Drawing.Size(75, 23);
-            this.EntrarDelete.TabIndex = 12;
-            this.EntrarDelete.Text = "Entrar";
-            this.EntrarDelete.UseVisualStyleBackColor = true;
-            this.EntrarDelete.Click += new System.EventHandler(this.EntrarDelete_Click);
-            // 
-            // SairDelete
-            // 
-            this.SairDelete.Location = new System.Drawing.Point(438, 52);
-            this.SairDelete.Name = "SairDelete";
-            this.SairDelete.Size = new System.Drawing.Size(75, 23);
-            this.SairDelete.TabIndex = 13;
-            this.SairDelete.Text = "Sair";
-            this.SairDelete.UseVisualStyleBackColor = true;
-            this.SairDelete.Click += new System.EventHandler(this.SairDelete_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(377, 10);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(126, 13);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "DESATIVAR AMBIENTE";
             // 
             // Form1
             // 

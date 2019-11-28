@@ -25,7 +25,7 @@ namespace ZerarNuvem
             InitializeComponent();
             PainelMenu.Enabled = false;
             FecharLogin.Enabled = false;
-            DesativaAmbiente.Visible = false;
+            DesativaAmbiente.Enabled = false;
             ConectDB().OpenConection();
         }
 
@@ -57,59 +57,35 @@ namespace ZerarNuvem
                 SairDelete.Enabled = false;
                 SenhaDelete.Text = "";
             }else  {
-                DesativaAmbiente.Visible = true;
+                DesativaAmbiente.Enabled = true;
                 SairDelete.Enabled = true;
                 SenhaDelete.Text = "";
             }
         
         }
-
-        public void AtualizaCombo()
-        {
-            var SelectNuvem = ConectDB().GetDatable($@"select * from clinica where cpfcnpj = '{CpfCnpjBanco.Text}'");
-            //MostraRazaoSocial
-            MostraRazaoSocial.DataSource = SelectNuvem;
-            MostraRazaoSocial.DisplayMember = "RazaoSocial";
-            
-            //MostraCpf
-            MostraCpfCNPJ.DataSource = SelectNuvem;
-            MostraCpfCNPJ.DisplayMember = "cpfcnpj";
-            
-            //MostraID
-            MostraID.DataSource = SelectNuvem;
-            MostraID.DisplayMember = "ID";
-            MostraID.ValueMember = "ID";
-
-            
-        }
-       // public void ExecutaDesativacao()
-       // {
-       //     try
-       //     {
-       //         var SelectAmbiente = ConectDB().GetDatable($@"select * from clinica where cpfcnpj = '{CpfCnpjBanco.Text}'");
-       //         MostraID.ValueMember = "ID";
-       //         var teste = MostraID;
-
-       //             ConectDB().ExecuteNonQueries($@"update clinica set ativo = 1 where id = {MostraID.Text}");
-       //     }
-       //     catch
-       //     {
-                
-       //         MessageBox.Show("ERROr!");
-       //     }
-            
-       //}
-
-
         private void button1_Click(object sender, EventArgs e)
         {
-            try { AtualizaCombo();
+            try {
+                var SelectNuvem = ConectDB().GetDatable($@"select * from clinica where cpfcnpj = '{CpfCnpjBanco.Text}'");
+                //MostraRazaoSocial
+                MostraRazaoSocial.DataSource = SelectNuvem;
+                MostraRazaoSocial.DisplayMember = "RazaoSocial";
+
+                //MostraCpf
+                MostraCpfCNPJ.DataSource = SelectNuvem;
+                MostraCpfCNPJ.DisplayMember = "cpfcnpj";
+                MostraCpfCNPJ.ValueMember = "cpfcnpj";
+
+
+                //MostraID
+                MostraID.DataSource = SelectNuvem;
+                MostraID.DisplayMember = "ID";
+                MostraID.ValueMember = "ID"; 
             }
             catch
             {
                 MostraRazaoSocial.Text = "AMBIENTE NÃO LOCALIZADO";
             }
-            
             
         }
 
@@ -131,8 +107,11 @@ namespace ZerarNuvem
     
         private void DesativaAmbiente_Click(object sender, EventArgs e)
         {
-            //ExecutaDesativacao();
+            var CpfCnpj = MostraCpfCNPJ.SelectedValue;
+            ConectDB().ExecuteNonQueries($@"update Clinica set Ativo = 1 where CpfCnpj = '{CpfCnpj}'");
+            
         }
+
 
         private void EntrarDelete_Click(object sender, EventArgs e)
         {
@@ -146,7 +125,7 @@ namespace ZerarNuvem
             
             EntrarDelete.Enabled = true;
             SairDelete.Enabled = false;
-            DesativaAmbiente.Visible = false;
+            DesativaAmbiente.Enabled = false;
 
         }
     }
