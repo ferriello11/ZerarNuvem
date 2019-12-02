@@ -15,3 +15,4 @@ C:\Projetos\ZerarNuvem\ZerarNuvem\bin\Debug\ZerarNuvem.pdb
 C:\Projetos\ZerarNuvem\ZerarNuvem\obj\Debug\ZerarNuvem.Form1.resources
 C:\Projetos\ZerarNuvem\ZerarNuvem\obj\Debug\ZerarNuvem.Properties.Resources.resources
 C:\Projetos\ZerarNuvem\ZerarNuvem\obj\Debug\ZerarNuvem.csproj.GenerateResource.Cache
+C:\Projetos\ZerarNuvem\ZerarNuvem\obj\Debug\ZerarNuvem.csprojResolveAssemblyReference.cache
