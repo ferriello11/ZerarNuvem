@@ -138,8 +138,8 @@ namespace ZerarNuvem
             if (DialogResult.Yes == MessageBox.Show("TEM CERTEZA EM DESATIAR A CLINICA?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2))
             {
                 ConectDB().ExecuteNonQueries($@"update Clinica set Ativo = 0 where ID = '{IdClinica}'");
-                ConectDB().ExecuteNonQueries($@"update ProfissionalClinica set Ativo = 0 where ID = '{IdClinica}'");
-                ConectDB().ExecuteNonQueries($@"update UsuarioClinica set Ativo = 0 where ID = '{IdClinica}'");
+                ConectDB().ExecuteNonQueries($@"update ProfissionalClinica set Ativo = 0 where ClinicaID = '{IdClinica}'");
+                ConectDB().ExecuteNonQueries($@"update UsuarioClinica set Ativo = 0 where ClinicaID = '{IdClinica}'");
                 MessageBox.Show("CLINICA DESATIVADA COM SUCESSO", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }else
             {
